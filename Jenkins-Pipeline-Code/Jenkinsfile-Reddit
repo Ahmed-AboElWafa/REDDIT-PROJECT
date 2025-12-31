@@ -53,15 +53,15 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'docker'){
                        sh "docker build -t reddit ."
-                       sh "docker tag reddit wafa8waga/reddit:${BUILD_NUMBER} "
-                       sh "docker push wafa8waga/reddit:${BUILD_NUMBER} "
+                       sh "docker tag reddit aaboelwafa/reddit:${BUILD_NUMBER} "
+                       sh "docker push aaboelwafa/reddit:${BUILD_NUMBER} "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image wafa8waga/reddit:${BUILD_NUMBER} > trivy.txt"
+                sh "trivy image aaboelwafa/reddit:${BUILD_NUMBER} > trivy.txt"
             }
         }
         stage('Update Deployment file') {
